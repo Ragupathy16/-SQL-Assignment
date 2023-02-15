@@ -1,0 +1,118 @@
+1.First we have to create database for student.
+>>create database student;
+
+2.We have to see that databases.
+>>show databases;
+
+3.We use the student database.
+>>Use student;
+
+4.Create table for student with their student records.
+>>Create table student(St_ID int NOT NULL,St_Name Varchar(25) NOT NULL,Gender varchar(10),Percentage int,St_Class int,St_Section varchar(15),Stream  varchar(30),DOB DATE);
+
+OUTPUT
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| St_ID      | int         | NO   |     | NULL    |       |
+| St_Name    | varchar(25) | NO   |     | NULL    |       |
+| Gender     | varchar(10) | YES  |     | NULL    |       |
+| Percentage | int         | YES  |     | NULL    |       |
+| St_Class   | int         | YES  |     | NULL    |       |
+| St_Section | varchar(15) | YES  |     | NULL    |       |
+| Stream     | varchar(30) | YES  |     | NULL    |       |
+| DOB        | date        | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+
+5.Inserted value in student table.
+
+>>insert into student values(001,'Ajith','male',75,12,'A sec','Computer Science','1998-01-02');
+>>insert into student values(002,'Ram','male',80,12,'A sec','Computer Science','1997-03-16');
+>>insert into student values(003,'Raju','male',89,12,'B sec','Computer Science','1999-09-25');
+>>insert into student values(004,'Ramesh','male',88,12,'B','Bio_Science','1998-03-17');
+>>insert into student values(005,'Swathi','female',90,12,'B sec','Bio_Science','1999-04-04');
+
+6.We have to see the inserted records in table.
+>> select * from student;
++------+--------+--------+------------+--------+-------+------------------+------------+
+| STID | Name   | Gender | percentage | SClass | Sec   | Stream           | DOB        |
++------+--------+--------+------------+--------+-------+------------------+------------+
+|    1 | Ajith  | male   |         75 |     12 | A sec | Computer Science | 1998-01-02 |
+|    2 | Ram    | male   |         80 |     12 | A sec | Computer Science | 1997-03-16 |
+|    3 | Raju   | male   |         89 |     12 | B sec | Computer Science | 1999-09-25 |
+|    4 | Ramesh | male   |         88 |     12 | B     | Bio_Science      | 1998-03-17 |
+|    5 | Swathi | female |         90 |     12 | B sec | Bio_Science      | 1999-04-04 |
+|    6 | Mithra | Female |         95 |     12 | B_sec | Bio_Science      | 2000-10-17 |
+|    7 |  Priya | Female |         79 |     12 | B_sec | Bio_Science      | 2001-11-20 |
++------+--------+--------+------------+--------+-------+------------------+------------+
+
+7.Display only the student name.
+>> select name from student;
++--------+
+| name   |
++--------+
+| Ajith  |
+| Ram    |
+| Raju   |
+| Ramesh |
+| Swathi |
+| Mithra |
+|  Priya |
++--------+
+
+8.Display the student DOB.
+>> select DOB from student;
++------------+
+| DOB        |
++------------+
+| 1998-01-02 |
+| 1997-03-16 |
+| 1999-09-25 |
+| 1998-03-17 |
+| 1999-04-04 |
+| 2000-10-17 |
+| 2001-11-20 |
++------------+
+
+9.Display all the student records where the percentage is greater or equal to 80 from the student table.
+>>select percentage from student where percentage >=80;
++------------+
+| percentage |
++------------+
+|         80 |
+|         89 |
+|         88 |
+|         90 |
+|         95 |
++------------+ 
+
+10.Display student name,stream and percentage where the percentage os student is more than 80.
+>> SELECT name, stream, percentage FROM student WHERE percentage >80;
++--------+------------------+------------+
+| name   | stream           | percentage |
++--------+------------------+------------+
+| Raju   | Computer Science |         89 |
+| Ramesh | Bio_Science      |         88 |
+| Swathi | Bio_Science      |         90 |
+| Mithra | Bio_Science      |         95 |
++--------+------------------+------------+
+
+11.Display all the records of science student whose percentage is more than 75 from the student table.
+>> SELECT * FROM student WHERE stream='Bio_Science' and percentage >75;
++------+--------+--------+------------+--------+-------+-------------+------------+
+| STID | Name   | Gender | percentage | SClass | Sec   | Stream      | DOB        |
++------+--------+--------+------------+--------+-------+-------------+------------+
+|    4 | Ramesh | male   |         88 |     12 | B     | Bio_Science | 1998-03-17 |
+|    5 | Swathi | female |         90 |     12 | B sec | Bio_Science | 1999-04-04 |
+|    6 | Mithra | Female |         95 |     12 | B_sec | Bio_Science | 2000-10-17 |
+|    7 |  Priya | Female |         79 |     12 | B_sec | Bio_Science | 2001-11-20 |
++------+--------+--------+------------+--------+-------+-------------+------------+ 
+
+12.Display all records name, percentage FROM student where percentage is between 60 and 80;
+ >> SELECT name, percentage FROM student WHERE percentage between 60 AND 80;
++--------+------------+
+| name   | percentage |
++--------+------------+
+| Ajith  |         75 |
+| Ram    |         80 |
+|  Priya |         79 |
